@@ -30,11 +30,11 @@ function findNumber(start, end, divisor) {
 }
 //32/32
 function includes(array, value) {
-  
-  for (const item of array){
-    if (item === value){
+
+  for(let i = 0; i < array.length; i++){
+    if(array[i] === value){
       return true;
-    }
+    } 
   }
     return false;  
 }
