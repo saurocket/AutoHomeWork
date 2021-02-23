@@ -316,4 +316,181 @@ const {today: {
 }
 } = forecast
 //26-41
+function calculateMeanTemperature(forecast) {
+  const {today:{low: todayLow,high:todayHigh},tomorrow:{low: tomorrowLow,high:tomorrowHigh} } = forecast
+  return (todayLow + todayHigh + tomorrowLow + tomorrowHigh) / 4;
+}
+//27-41
+const scores = [89, 64, 42, 17, 93, 51, 26];
+const bestScore = Math.max(...scores);
+const worstScore = Math.min(...scores);
+//28-41
+const firstGroupScores = [64, 42, 93];
+const secondGroupScores = [89, 14, 51, 26];
+const thirdGroupScores = [29, 47, 18, 97, 81];
+const allScores = [...firstGroupScores, ...secondGroupScores, ...thirdGroupScores];
+const bestScore = Math.max(...allScores);
+const worstScore = Math.min(...allScores);
 
+//29-41
+const defaultSettings = {
+  theme: 'light',
+  public: true,
+  withPassword: false,
+  minNumberOfQuestions: 10,
+  timePerQuestion: 60,
+};
+const overrideSettings = {
+  public: false,
+  withPassword: true,
+  timePerQuestion: 30,
+};
+const finalSettings = {...defaultSettings, ...overrideSettings};
+ 
+//30-41
+function makeTask(data) {
+  const completed = false;
+  const category = 'Общее';
+  const priority = 'Обычный';
+return {completed,category,priority,...data}
+}
+//31-41
+function add(...args) {
+  let summ = 0;
+  let arr = Object.values(args);
+  for (let i = 0; i < arr.length; i++){
+    summ += arr[i]
+  }
+  return summ;
+}
+//32-41
+function addOverNum(num,...args) {
+  let total = 0;
+
+  for (const arg of args) {
+    if (arg > num){
+      total += arg;
+    }
+  }
+  return total;
+}
+//33-41
+function findMatches(arr, ...props) {
+  const matches = []; // Не изменяй эту строку
+
+for (let value of props){
+   if (arr.includes(value)){
+     matches.push(value)
+   }
+}
+  return matches;
+}
+//34-41
+const bookShelf = {
+    // Пиши код ниже этой строки
+    books: ['Последнее королевство', 'Страж снов'],
+    getBooks() {
+      return 'Возвращаем все книги';
+    },
+    addBook(bookName) {
+      return `Добавляем книгу ${bookName}`;
+    },
+    removeBook(bookName){
+        return `Удаляем книгу ${bookName}`
+    },
+    updateBook(oldName, newName){
+        return `Обновляем книгу ${oldName} на ${newName}`
+    }
+    // Пиши код выше этой строки
+  };
+  
+//35-41
+const bookShelf = {
+    books: ['Последнее королевство', 'Мгла', 'Страж снов'],
+    updateBook(oldName, newName) {
+      // Пиши код ниже этой строки
+      let index = this.books.indexOf(oldName);
+      console.log(index);
+      this.books.splice(index, 1, newName);
+
+    },
+  };
+//36-41
+  const atTheOldToad = {  
+  };
+  atTheOldToad.potions = [];
+
+  //37-41
+  const atTheOldToad = {
+    // Пиши код ниже этой строки
+    potions: ['Зелье скорости', 'Дыхание дракона', 'Каменная кожа'],
+    getPotions(){
+    return this.potions
+    }
+        // Пиши код выше этой строки
+  };
+  //38-41
+  const atTheOldToad = {
+    potions: ['Зелье скорости', 'Дыхание дракона', 'Каменная кожа'],
+    addPotion(potionName) {
+     this.potions.push(potionName);
+    },
+  };
+  //39-41
+  const atTheOldToad = {
+    potions: ["Зелье скорости", "Дыхание дракона", "Каменная кожа"],
+    removePotion(potionName) {
+      // Пиши код ниже этой строки
+      let index = this.potions.indexOf(potionName);
+      this.potions.splice(index,1);
+      // Пиши код выше этой строки
+    },
+  };
+  
+//40-41
+const atTheOldToad = {
+    potions: ['Зелье скорости', 'Дыхание дракона', 'Каменная кожа'],
+    updatePotionName(oldName, newName) {
+      // Пиши код ниже этой строки
+        let index = this.potions.indexOf(oldName);
+        this.potions.splice(index, 1, newName);
+      // Пиши код выше этой строки
+    },
+  };
+//41-41
+const atTheOldToad = {
+  potions: [
+    { name: 'Зелье скорости', price: 460 },
+    { name: 'Дыхание дракона', price: 780 },
+    { name: 'Каменная кожа', price: 520 },
+  ],
+  // Пиши код ниже этой строки
+  getPotions() {
+    return this.potions;
+  },
+  addPotion(potionName) {
+
+    this.potions.map(u => {
+      if (u.name ===potionName.name){
+        return `Зелье ${potionName} уже есть в инвентаре!`;
+      }
+    })
+    this.potions.push(potionName);
+  },
+  removePotion(potionName) {
+    for (let i = 0; i < this.potions.length; i++){
+      let tempName = this.potions[i].name
+   
+      if (tempName === potionName){
+          this.potions.splice(i,1);
+      }
+    }
+  },
+  updatePotionName(oldName, newName) {
+    for (let i = 0; i < this.potions.length; i++){
+      if (this.potions[i].name === oldName){
+        this.potions[i].name = newName;
+      }
+    }
+  },
+};
