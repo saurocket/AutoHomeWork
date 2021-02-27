@@ -387,3 +387,39 @@ const sortByName = users => {
 };
 // Пиши код выше этой строки
 //41-44
+const books = [
+  { title: 'Последнее королевство', author: 'Бернард Корнуэлл', rating: 8.38 },
+  { title: 'На берегу спокойных вод', author: 'Роберт Шекли', rating: 8.51 },
+  { title: 'Сон смешного человека', author: 'Федор Достоевский', rating: 7.75 },
+  { title: 'Красна как кровь', author: 'Ли Танит', rating: 8.14 },
+  { title: 'Сны В Ведьмином Доме', author: 'Говард Лавкрафт', rating: 8.67 }
+];
+const MIN_BOOK_RATING = 8;
+// Пиши код ниже этой строки
+
+const names = books.filter(u => u.rating > 8)
+.sort((a, b) => a.author.localeCompare(b.author))
+.map(u => u.author);
+
+//42-44
+
+const getNamesSortedByFriendCount = users => {
+  return [...users].sort((a,b) => a.friends.length - b.friends.length)
+  .map(u => u.name);
+};
+
+//43-44
+const getSortedFriends = users => {
+  return users.flatMap(u => u.friends)
+  .filter((friend, index, arr) => arr.indexOf(friend) === index)
+  .sort((a,b) => a.localeCompare(b))
+};
+// Пиши код выше этой строки
+//44-44
+const getTotalBalanceByGender = (users, gender) => {
+  return users.filter( u => u.gender === gender)
+  .map(u => u.balance)
+  .reduce((summ, current) => {
+     return summ+ current;
+  },0) 
+};
